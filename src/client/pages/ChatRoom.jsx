@@ -3,20 +3,21 @@ import { io } from 'socket.io-client'
 import EmojiPicker from 'emoji-picker-react'
 
 // Socket fallback
-const SOCKET_URLS = [
-  "http://10.93.17.241:3000",
-  "http://10.93.22.210:3000"
-]
+// const SOCKET_URLS = [
+//   "http://10.93.17.241:3000",
+//   "http://10.93.22.210:3000"
+// ]
 
-let socket
-for (const url of SOCKET_URLS) {
-  try {
-    socket = io(url, { timeout: 2000 })
-    break
-  } catch (err) {
-    console.error("Không kết nối được:", url)
-  }
-}
+// let socket
+// for (const url of SOCKET_URLS) {
+//   try {
+//     socket = io(url, { timeout: 2000 })
+//     break
+//   } catch (err) {
+//     console.error("Không kết nối được:", url)
+//   }
+// }
+const socket = io("https://roomchat-ixt3.onrender.com")
 
 // VAPID public key
 const PUBLIC_VAPID_KEY = 'BPGHv4kLY7Rv-mbja7YOb1J3LfErVjjQvEFDOiNunKmz2SurewqqaCg35lCJ1AsgouEPS_4jpYvghUma40e4BvA'
