@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "start": "node server/server.js",
     "lint": "eslint .",
     "preview": "vite preview",
     "init-tailwind": "node node_modules/tailwindcss/dist/lib.js init -p"

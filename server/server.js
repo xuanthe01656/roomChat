@@ -2,6 +2,8 @@ import express from 'express';
 import { createServer } from 'http';
 import { Server } from 'socket.io';
 import webpush from 'web-push';
+import path from "path"; 
+import { fileURLToPath } from "url";
 
 const app = express();
 const httpServer = createServer(app);
@@ -10,7 +12,12 @@ const io = new Server(httpServer, {
     origin: "*",
   }
 });
-
+const __filename = fileURLToPath(import.meta.url); 
+const __dirname = path.dirname(__filename); 
+app.use(express.static(path.join(__dirname, "../dist"))); 
+app.get("*", (req, res) => { 
+    res.sendFile(path.join(__dirname, "../dist", "index.html")); 
+});
 // Dữ liệu chính
 const rooms = {
   general: { id: 'general', label: 'Sảnh chung', type: 'public', owner: 'system', members: [], pendingRequests: [] },
